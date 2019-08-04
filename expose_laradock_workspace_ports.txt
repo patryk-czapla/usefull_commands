@@ -1,0 +1,25 @@
+In workspace/Dockerfile add
+```
+EXPOSE $PORT
+```
+In docker-compse.yml add
+```
+services:
+  workspace:
+    port:
+      - $PORT:$PORT
+```
+Recrete container:
+```
+docker-compose up -d workspace
+```
+
+and voila use:  
+```
+docker-compose exec --user=laradock workspace bash
+```
+
+For example vue ui use:   
+```
+vue ui --host 0.0.0.0 -p $PORT
+```
